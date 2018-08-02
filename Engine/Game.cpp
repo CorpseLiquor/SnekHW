@@ -26,9 +26,13 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	brd( gfx ),
+	brd( gfx, settings.BoardX, settings.BoardY, settings.TileSize ),
 	rng( std::random_device()() ),
-	snek( {2,2} )
+	snek( {2,2} ),
+	nPoison(settings.PoisonAmount),
+	nFood(settings.GoalAmount),
+	snekSpeedupFactor(settings.SpeedUpRate),
+	settings("settings.txt")
 {
 	for( int i = 0; i < nPoison; i++ )
 	{
